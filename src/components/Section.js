@@ -26,7 +26,7 @@ function Section(props) {
                 
             </ButtonGroup> 
             </Fade>
-        <DownArrow src="images/down-arrow.svg" />
+        <Inside><DownArrow src="images/down-arrow.svg" /></Inside>
         </Buttons>
         </Wrap>
     )
@@ -83,11 +83,18 @@ const RightButton = styled(LeftButton)`
 
 `
 const DownArrow = styled.img`
+    margin:auto;
     margin-top:20px;
     height:40px;
     overflow-x:hidden;
     animation: animateDown infinite 1.5s;
 
+`
+const Inside = styled.div`
+    margin:auto;
+    width:100%;
+    display:flex;
+    justify-content:center;
 `
 const Buttons = styled.div`
 
