@@ -14,7 +14,8 @@ function Home() {
                 description="Order Online for Touchless Delivery"
                 leftBtnText="Custom order"
                 rightBtnText="Existing inventory"
-                ></Section>
+                idName="modelX"
+                />
                 </div>
                 <div id='modelX'>
                 <Section 
@@ -23,7 +24,7 @@ function Home() {
                     description="Order Online for Touchless Delivery"
                     leftBtnText="Custom order"
                     rightBtnText="Existing inventory"
-                    
+                    idName="model3"
                 />
                 </div>
                 <div  id='model3'>
@@ -33,7 +34,7 @@ function Home() {
                     description="Order Online for Touchless Delivery"
                     leftBtnText="Custom order"
                     rightBtnText="Existing inventory"
-                   
+                    idName="modelY"
                 />
                 </div>
                 <div id='modelY'>
@@ -43,30 +44,39 @@ function Home() {
                     description="Order Online for Touchless Delivery"
                     leftBtnText="Custom order"
                     rightBtnText="Existing inventory"
-                    
+                    idName="panel"
                 />
                 </div>
-                   <Section 
+                <div id='panel'>
+                <Section 
                     title="Lowest Cost Solar Panels in America"
                     backgroundImg="solar-panel.jpg"
                     description="Money-back gurantee"
                     leftBtnText="Order now"
                     rightBtnText="Learn more"
-                    id='panel'
+                    idName="roof"
                 />
+                </div>
+                <div id='roof'>
                  <Section 
                     title="Solar for New Roofs"
                     backgroundImg="solar-roof.jpg"
                     description="Solar Roof Costs Less Than a New Roof Cover"
                     leftBtnText="Order now"
                     rightBtnText="Learn more"
+                    idName="accessories"
                 />
+                </div>
+                <div id='accessories'>
                  <Section 
                     title="Accessories"
                     backgroundImg="accessories.jpg"
                     description=""
                     leftBtnText="Shop now"
+                    idName="modelS"
                 />
+                </div>
+
             </Container>
         </div>
     )

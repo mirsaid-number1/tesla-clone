@@ -26,7 +26,7 @@ function Section(props) {
                 
             </ButtonGroup> 
             </Fade>
-        <Inside><DownArrow src="images/down-arrow.svg" /></Inside>
+            <Inside><a href={`#${props.idName}`}><DownArrow src="images/down-arrow.svg" /></a></Inside>
         </Buttons>
         </Wrap>
     )

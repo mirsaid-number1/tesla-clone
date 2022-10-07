@@ -3,50 +3,69 @@ import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import Close from '@material-ui/icons/Close';
 import '../main.css';
-import Fade from 'react-reveal/Fade';
 import {selectCars} from '../features/car/carSlice';
 import {useSelector} from 'react-redux';
 
 function Header() {
-    let [burgerStatus,setBurgerStatus] = useState(false);
+    var [burgerStatus,setBurgerStatus] = useState(false);
     let cars = useSelector(selectCars);
     let ids = ['#modelS','#modelX', '#model3', '#modelY'];
     function changeBurger () {
         setBurgerStatus(!burgerStatus);
     }
+    const BurgerNav = {
+        display:'flex',
+        flexDirection: 'column',
+        textAlign: 'start',
+        position:'fixed',
+        top:0,
+        right:`${burgerStatus ? '0' : '-500px'}`,
+        transition:'200ms ease',
+        height:'100vh',
+        background:'rgba(255,255,255, 0.9)',
+        padding:'20px',
+        width:'230px',
+    }
+    const listStyle = {
+        padding:'15px 0',
+        borderBottom:'1px solid rgba(0,0,0,0.2)',
+        listStyle:'none',
+        fontWeight:600,
+    } 
     return (
         <div>
+            <div className={!burgerStatus ? 'none' : 'show'} onClick={changeBurger}></div>
             <Container>
-                <a href="#">
+                <span>
                     <img src="/images/logo.svg" alt="logo" />
-                </a>
+                </span>
                 <Menu>
                     {cars && cars.map((car,index) => (
                         <a key={index} href={ids[index]}>{car}</a>
                     ))}
                 </Menu>
-                <RightMenu>
-                    <a href="#">Shop</a>
-                    <a href="#">Tesla Account</a>
-                    <CustomMenu onClick={changeBurger}/>
-                </RightMenu>
-               {burgerStatus ? <Fade right big>
-                   <BurgerNav>
+                <RightMenu onClick={changeBurger}>
+                    <span>Shop</span>
+                    <span>Tesla Account</span>
+                    <CustomMenu/>
+                </RightMenu>    
+                <div style={BurgerNav} className='sidebar'>
                     <CloseWrapper >
                         <CustomClose onClick={changeBurger}/>
                     </CloseWrapper>
                     {cars && cars.map((car,index) => (
-                       <li key={index}><a href="#">{car}</a></li>
+                       <li key={index} style={listStyle}><a href={ids[index]}>{car}</a></li>
                     ))}
-                    <li><a href="#">Existing inventory</a></li>
-                    <li><a href="#">Used Inventory</a></li>
-                    <li><a href="#">Trade_in</a></li>
-                    <li><a href="#">Cybertruck</a></li>
-                    <li><a href="#">Roadster</a></li>
-                </BurgerNav></Fade> : null} 
+                    <li style={listStyle}><a href="#modelS" >Existing inventory</a></li>
+                    <li style={listStyle}><a href="#modelS" >Used Inventory</a></li>
+                    <li style={listStyle}><a href="#modelS" >Trade_in</a></li>
+                    <li style={listStyle}><a href="#modelS" >Cybertruck</a></li>
+                    <li style={listStyle}><a href="#modelS" >Roadster</a></li>
+                </div> 
             </Container>
         </div>
     )
+
 }
 
 export default Header
@@ -62,7 +81,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     z-index:1;
-    a{
+    span,a{
         text-decoration:none;
         color:black;
     }
@@ -90,36 +109,22 @@ const Menu = styled.div`
 `
 const RightMenu = styled.div`
     display: flex;
-    a {
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-right: 10px;
+    span {
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+
+    @media(max-width:500px) {
+        span {
+            display:none;
+        }
     }
 `
 const CustomMenu = styled(MenuIcon)`
     cursor:pointer;
 `
-const BurgerNav = styled.div`
-    position:fixed;
-    top:0;
-    right:0;
-    background:white;
-    padding:20px;
-    width:230px;
-    display:flex;
-    flex-direction: column;
-    text-align: start;
 
-
-li{
-    padding:15px 0;
-    border-bottom:1px solid rgba(0,0,0,0.2);
-    list-style:none;
-    a{
-        font-weight:600;
-    }
-} 
-`
 const CustomClose = styled(Close)`
     cursor:pointer;
 `
